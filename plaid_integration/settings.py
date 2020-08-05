@@ -35,6 +35,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django_extensions',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
+    'django.contrib.sites',
+
+    'plaid_integration.Item'
 ]
 
 MIDDLEWARE = [
@@ -113,3 +124,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 BROKER_URL = 'amqp://0.0.0.0:56720/'
+
+SITE_ID = 1
+
+PLAID_CLIENT_ID='5f2a4d772a9d600011352c00'
+PLAID_SECRET='6adb1635944922ba31b1494517cdc9'
+PLAID_PRODUCTS='transactions'
+PLAID_COUNTRY_CODES='US'
+PLAID_ENV='sandbox'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}

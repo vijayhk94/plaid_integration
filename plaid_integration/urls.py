@@ -13,9 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
 from django.contrib import admin
+from django.urls import path, include
+from rest_framework.routers import SimpleRouter
+
+from plaid_integration.Item.views import ItemViewSet
+
+router = SimpleRouter()
+router.register(r'item', ItemViewSet, basename='item')
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-]
+    path('admin/', admin.site.urls),
+    path('accounts/', include('rest_auth.urls')),
+    path('accounts/signup/', include('rest_auth.registration.urls')),
+    path('', include(router.urls))]
