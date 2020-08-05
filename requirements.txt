@@ -1,0 +1,7 @@
+plaid-python
+Django
+djangorestframework
+django-rest-auth[with_social]
+django-extensions
+Celery
+django-kombu
